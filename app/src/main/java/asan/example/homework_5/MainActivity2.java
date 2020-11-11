@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    public static final String KAK_DELA = "kak_dela";
+    public static final String KEY = "key";
 
     EditText editText;
     Button button;
@@ -32,7 +32,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 String string = editText.getText().toString().trim();
                 Intent intent1 = new Intent();
-                intent1.putExtra(KAK_DELA, string);
+                intent1.putExtra(KEY, string);
                 setResult(RESULT_OK, intent1);
                 finish();
             }

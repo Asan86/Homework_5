@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements OnClicListener {
     private ArrayList<String> list;
     private int position;
     Adapter adapter;
+    private static final int REQUEST_CODE_ADD = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +49,14 @@ public class MainActivity extends AppCompatActivity implements OnClicListener {
         this.position = position;
         Intent intent = new Intent(this, MainActivity2.class);
         intent.putExtra("KEY", list.get(position));
-        startActivityForResult(intent, 10);
+        startActivityForResult(intent, REQUEST_CODE_ADD);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 10 && resultCode == RESULT_OK && data != null) {
-            String string = data.getStringExtra(MainActivity2.KAK_DELA);
+        if (requestCode == REQUEST_CODE_ADD && resultCode == RESULT_OK && data != null) {
+            String string = data.getStringExtra(MainActivity2.KEY);
             list.set(position, string);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "succes", Toast.LENGTH_SHORT).show();
